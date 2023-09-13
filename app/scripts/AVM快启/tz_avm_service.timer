@@ -1,0 +1,13 @@
+# /etc/systemd/system/tz_avm_service.timer
+[Unit]
+Description= TZTEK AVM Service Timer
+
+[Timer]
+OnBootSec=3s
+Unit=tz_avm.service
+
+[Install]
+WantedBy=timers.target
+
+
+# systemctl enable tz_avm_service.timer

@@ -1,0 +1,11 @@
+# /etc/systemd/system/tz_avm.service
+
+[Unit]
+Description=TZTEK AVM Service
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /home/root/avm_start.sh
+
+[Install]
+WantedBy=multi-user.target
