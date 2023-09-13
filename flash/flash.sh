@@ -4,6 +4,7 @@ ImagePath="/home/y/work/code/410_d82/sdk/buildsystem/image_X9U_merge_pac"
 tmpPath="/home/y/tools/semidrive/SDToolBox_R2.23.1601/App/Linux/pydownload/bin/ImageFiles"
 rePath="/home/y/work/flash/IMAGE"
 version="old"
+ssb="true"
 
 replace() {
     sleep 0.5s
@@ -26,11 +27,16 @@ while getopts "v:i:" opt;do
     i)
         ImagePath=${OPTARG}
         ;;
+    b)
+        ssb=${OPTARG}
+        ;;
     \?)
         echo "无效的选项: -$OPTARG"
         ;;
     esac
 done
 
-replace ${version} &
+if [ ${ssb} == "true" ];then
+    replace ${version} &
+fi
 sudo ${pydownload} --ospi1 ${ImagePath}/ospi2.pac --emmc1 ${ImagePath}/global2.pac 
